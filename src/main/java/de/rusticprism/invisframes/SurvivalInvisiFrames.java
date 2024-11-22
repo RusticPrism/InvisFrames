@@ -260,7 +260,7 @@ public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
                     ItemMeta meta = frame.getItemMeta();
                     meta.displayName(mm.deserialize("<white>Glow Invisible Item Frame"));
                     frame.setItemMeta(meta);
-                    frame.setType(glowFrame);
+                    frame = frame.withType(glowFrame);
                 }
                 event.getEntity().setItemStack(frame);
 
