@@ -1,6 +1,6 @@
 # Survival Invisiframes
 
-This plugin enables the use of 1.16's invisible item frames for survival players (Updated to 1.19 by RusticPrism)
+This plugin enables the use of 1.16's invisible item frames for survival players (Updated to 1.21 by RusticPrism)
 
 Invisible item frames are crafted similar to tipped arrows - one lingering invisibility potion surrounded by 8 item
 frames\
