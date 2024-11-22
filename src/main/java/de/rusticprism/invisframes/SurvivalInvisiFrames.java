@@ -45,7 +45,7 @@ public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
         ItemStack item = new ItemStack(Material.ITEM_FRAME, 1);
         ItemMeta meta = item.getItemMeta();
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, true);
         meta.displayName(mm.deserialize("<white>Invisible Item Frame"));
         meta.getPersistentDataContainer().set(invisibleKey, PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
@@ -276,7 +276,6 @@ public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
         if (!framesGlow) {
             return;
         }
-
         if (isFrameEntity(event.getRightClicked()) &&
                 event.getRightClicked().getPersistentDataContainer().has(invisibleKey, PersistentDataType.BYTE)) {
             ItemFrame frame = (ItemFrame) event.getRightClicked();

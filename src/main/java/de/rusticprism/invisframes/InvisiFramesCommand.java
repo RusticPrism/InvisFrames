@@ -1,6 +1,6 @@
 package de.rusticprism.invisframes;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,6 +8,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("get")) {
             giveItem(sender);
             return true;
@@ -31,7 +32,7 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
             survivalInvisiframes.reload();
-            sender.sendMessage(ChatColor.GREEN + "Reloaded!");
+            sender.sendMessage(NamedTextColor.GREEN + "Reloaded!");
             return true;
         } else if (args[0].equalsIgnoreCase("force-recheck")) {
             if (!sender.hasPermission("survivalinvisiframes.forcerecheck")) {
@@ -39,7 +40,7 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
             survivalInvisiframes.forceRecheck();
-            sender.sendMessage(ChatColor.GREEN + "Rechecked invisible item frames");
+            sender.sendMessage(NamedTextColor.GREEN + "Rechecked invisible item frames");
             return true;
         } else if (args[0].equalsIgnoreCase("setitem")) {
             if (!sender.hasPermission("survivalinvisiframes.setitem")) {
@@ -47,19 +48,19 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
             if (!(sender instanceof Player)) {
-                sender.sendMessage(ChatColor.RED + "Sorry, you must be a player to use this command!");
+                sender.sendMessage(NamedTextColor.RED + "Sorry, you must be a player to use this command!");
                 return true;
             }
             ItemStack item = ((Player) sender).getInventory().getItemInMainHand();
             survivalInvisiframes.setRecipeItem(item);
-            sender.sendMessage(ChatColor.GREEN + "Recipe item updated!");
+            sender.sendMessage(NamedTextColor.GREEN + "Recipe item updated!");
             return true;
         }
         return false;
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length != 1) {
             return Collections.emptyList();
         }
@@ -83,7 +84,7 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
     }
 
     private void sendNoPermissionMessage(CommandSender sender) {
-        sender.sendMessage(ChatColor.RED + "Sorry, you don't have permission to run this command");
+        sender.sendMessage(NamedTextColor.RED + "Sorry, you don't have permission to run this command");
     }
 
     private void giveItem(CommandSender sender) {
@@ -91,13 +92,12 @@ public class InvisiFramesCommand implements CommandExecutor, TabCompleter {
             sendNoPermissionMessage(sender);
             return;
         }
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "Sorry, you must be a player to use this command!");
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage(NamedTextColor.RED + "Sorry, you must be a player to use this command!");
             return;
         }
 
-        Player player = (Player) sender;
         player.getInventory().addItem(SurvivalInvisiFrames.generateInvisibleItemFrame());
-        player.sendMessage(ChatColor.GREEN + "Added an invisible item frame to your inventory");
+        player.sendMessage(NamedTextColor.GREEN + "Added an invisible item frame to your inventory");
     }
 }

@@ -1,27 +1,26 @@
 name: InvisFrames
 version: '${version}'
-main: de.rusticprism.invisframes.SurvivalInvisFrames
-api-version: 1.19
+main: de.rusticprism.invisframes.SurvivalInvisiFrames
+api-version: 1.20
 load: STARTUP
 authors: [ RusticPrism, Techdoodle ]
 commands:
-  commands:
-    iframe:
-      permission: survivalinvisiframes.cmd
-      description: Gives the player an invisible item frame
-      usage: /iframe
-  permissions:
-    survivalinvisiframes.place:
-      default: true
-    survivalinvisiframes.craft:
-      default: true
-    survivalinvisiframes.cmd:
-      default: op
-    survivalinvisiframes.reload:
-      default: op
-    survivalinvisiframes.forcerecheck:
-      default: op
-    survivalinvisiframes.get:
-      default: op
-    survivalinvisiframes.setitem:
-      default: op
+  iframe:
+    permission: survivalinvisiframes.cmd
+    description: Gives the player an invisible item frame
+    usage: /iframe
+permissions:
+  survivalinvisiframes.place:
+    default: true
+  survivalinvisiframes.craft:
+    default: true
+  survivalinvisiframes.cmd:
+    default: op
+  survivalinvisiframes.reload:
+    default: op
+  survivalinvisiframes.forcerecheck:
+    default: op
+  survivalinvisiframes.get:
+    default: op
+  survivalinvisiframes.setitem:
+    default: op
