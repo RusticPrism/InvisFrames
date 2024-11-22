@@ -182,7 +182,7 @@ public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
                 ItemMeta meta = invisibleGlowingItem.getItemMeta();
                 meta.displayName(mm.deserialize("<white>Glow Invisible Item Frame"));
                 invisibleGlowingItem.setItemMeta(meta);
-                invisibleGlowingItem.setType(glowFrame);
+                invisibleGlowingItem = invisibleGlowingItem.withType(glowFrame);
 
                 event.getInventory().setResult(invisibleGlowingItem);
             }
