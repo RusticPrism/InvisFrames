@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
-    private static final MiniMessage mm = MiniMessage.miniMessage();
+    public static final MiniMessage mm = MiniMessage.miniMessage();
     private static NamespacedKey invisibleKey;
     private NamespacedKey invisibleRecipe;
     private Set<DroppedFrameLocation> droppedFrames;
@@ -279,7 +279,7 @@ public class SurvivalInvisiFrames extends JavaPlugin implements Listener {
         if (isFrameEntity(event.getRightClicked()) &&
                 event.getRightClicked().getPersistentDataContainer().has(invisibleKey, PersistentDataType.BYTE)) {
             ItemFrame frame = (ItemFrame) event.getRightClicked();
-            Bukkit.getScheduler().runTaskLater(this, () ->
+            Bukkit.getServer().getScheduler().runTaskLater(this, task ->
             {
                 if (frame.getItem().getType() != Material.AIR) {
                     frame.setGlowing(false);
